@@ -1,7 +1,7 @@
 
-from utils import *
+# from utils import * # optional
 
-
+# Encoding Board of sudoku
 row_units = [cross(r, cols) for r in rows]
 column_units = [cross(rows, c) for c in cols]
 square_units = [cross(rs, cs) for rs in ('ABC','DEF','GHI') for cs in ('123','456','789')]
@@ -9,7 +9,7 @@ unitlist = row_units + column_units + square_units
 diagonal_units = [[rows[i] + cols[i] for i in range(9)]] + [[rows[i] + cols[::-1][i] for i in range(9)]]
 
 
-# TODO: Update the unit list to add the new diagonal units
+#  Update the unit list to add the new diagonal units
 unitlist = unitlist + diagonal_units
 
 
@@ -95,7 +95,7 @@ def eliminate(values):
     dict
         The values dictionary with the assigned values eliminated from peers
     """
-    # TODO: Copy your code from the classroom to complete this function
+    
     solved_values = [box for box in values.keys() if len(values[box]) == 1]
     for box in solved_values:
         digit = values[box]
@@ -151,7 +151,7 @@ def reduce_puzzle(values):
         The values dictionary after continued application of the constraint strategies
         no longer produces any changes, or False if the puzzle is unsolvable 
     """
-    # TODO: Copy your code from the classroom and modify it to complete this function
+    
     stalled = False
     while not stalled:
         # Check how many boxes have a determined value
@@ -190,7 +190,7 @@ def search(values):
     You should be able to complete this function by copying your code from the classroom
     and extending it to call the naked twins strategy.
     """
-    # TODO: Copy your code from the classroom to complete this function
+    
     values = reduce_puzzle(values)
     if values is False:
         return False ## Failed earlier
